@@ -8,9 +8,9 @@ import (
 
 func deleteIfNecessary(users map[string]user, name string) (deleted bool, err error) {
 	user, ok := users[name]
-	if ok == false {
+	if !ok {
 		return true, errors.New("not found")
-	} else if user.scheduledForDeletion == true {
+	} else if user.scheduledForDeletion {
 		delete(users, name)
 		return true, nil
 	} else {
