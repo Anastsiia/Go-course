@@ -8,7 +8,7 @@ type cost struct {
 }
 
 func getCostsByDay(costs []cost) []float64 {
-	max := 0
+	/* max := 0
 	for i := 0; i < len(costs); i++ {
 		if costs[i].day > max {
 			max = costs[i].day
@@ -18,6 +18,17 @@ func getCostsByDay(costs []cost) []float64 {
 	fmt.Println(max)
 	fmt.Println(total)
 	for i := 0; i < len(costs); i++ {
+		total[costs[i].day] += costs[i].value
+	}
+	 return total
+	*/
+	// same, but with "append":
+
+	total := []float64{}
+	for i := 0; i < len(costs); i++ {
+		for costs[i].day >= len(total) {
+			total = append(total, 0.0)
+		}
 		total[costs[i].day] += costs[i].value
 	}
 	return total
